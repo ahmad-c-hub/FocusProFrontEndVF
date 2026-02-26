@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'config/theme/app_colors.dart';
+import 'features/auth/presentation/pages/auth_page.dart';
 
 void main() async {
   await dotenv.load(fileName: ".env");
@@ -23,76 +24,8 @@ class FocusProApp extends StatelessWidget {
         ),
         scaffoldBackgroundColor: AppColors.background,
       ),
-      home: const HomeScreen(),
+      home: const AuthPage(),
       debugShowCheckedModeBanner: false,
-    );
-  }
-}
-
-class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Focus Pro'),
-        centerTitle: true,
-        backgroundColor: AppColors.primary,
-        elevation: 0,
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Container(
-              width: 80,
-              height: 80,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: AppColors.primary,
-              ),
-              child: const Icon(
-                Icons.psychology,
-                color: Colors.white,
-                size: 40,
-              ),
-            ),
-            const SizedBox(height: 24),
-            const Text(
-              'Welcome to Focus Pro',
-              style: TextStyle(
-                fontSize: 24,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 12),
-            const Text(
-              'Strengthen your focus, reduce distractions',
-              style: TextStyle(
-                fontSize: 16,
-                color: Colors.grey,
-              ),
-            ),
-            const SizedBox(height: 48),
-            ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('App is running!')),
-                );
-              },
-              style: ElevatedButton.styleFrom(
-                backgroundColor: AppColors.primary,
-                padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-              ),
-              child: const Text(
-                'Get Started',
-                style: TextStyle(fontSize: 16, color: Colors.white),
-              ),
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
